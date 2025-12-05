@@ -1,0 +1,21 @@
+/* theme-hospital.css — warna & aksen klinis */
+:root{
+  --accent: #0b7b88;      /* deep teal for buttons/accents */
+  --accent-2: #56c7c1;    /* soft mint for highlights */
+  --muted: #55686f;       /* override muted */
+  --brand-shadow: 0 8px 26px rgba(11,123,136,0.08);
+}
+
+/* logo tint & card subtle border glow */
+.logo{ background: linear-gradient(180deg, var(--accent), var(--accent-2)); box-shadow: var(--brand-shadow) }
+.card{ border-color: rgba(11,123,136,0.06); box-shadow: 0 14px 40px rgba(11,123,136,0.04) }
+
+/* primary button style */
+.primary{ background: linear-gradient(90deg, var(--accent), var(--accent-2)); box-shadow: 0 8px 30px rgba(6,96,101,0.08); color:white; }
+
+/* input focus subtle teal glow */
+input:focus{ box-shadow: 0 8px 28px rgba(6,123,127,0.06); border-color: rgba(6,123,127,0.22); }
+
+/* small tweaks for theme */
+.quicklist li{background:linear-gradient(180deg,#fff,#fbfeff)}
+.welcome{color:#08323a}
