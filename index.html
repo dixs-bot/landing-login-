@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login — Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg1:#0f172a; /* deep navy */
+      --bg2:#071033; /* darker */
+      --accent:#7c3aed; /* violet */
+      --glass: rgba(255,255,255,0.06);
+      --glass-2: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(124,58,237,0.12), transparent 6%),
+                  radial-gradient(900px 400px at 90% 90%, rgba(14,165,233,0.06), transparent 6%),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#eef2ff;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px 20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      grid-template-columns:1fr 420px;
+      gap:36px;
+      align-items:center;
+    }
+
+    /* left: marketing / hero */
+    .hero{
+      padding:36px 40px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      backdrop-filter: blur(8px) saturate(120%);
+    }
+    .logo{
+      display:inline-flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:18px;
+    }
+    .logo .mark{
+      width:44px;height:44px;border-radius:10px; display:inline-grid;place-items:center;
+      background: linear-gradient(135deg,var(--accent),#06b6d4);
+      font-weight:800;color:white;font-size:18px;box-shadow:0 6px 20px rgba(124,58,237,0.18);
+    }
+    h1{font-size:32px;margin:6px 0 12px}
+    p.lead{opacity:0.9;line-height:1.5;margin:0 0 18px}
+
+    .features{
+      display:flex;gap:12px;flex-wrap:wrap;margin-top:18px;
+    }
+    .feature{
+      background:var(--glass-2);padding:12px 14px;border-radius:12px;font-size:14px;color:#dbeafe;display:flex;gap:10px;align-items:center;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.02);
+    }
+    .feature .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(180deg,var(--accent),#06b6d4)}
+
+    /* right: login card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border-radius:16px;padding:26px;box-shadow: 0 10px 30px rgba(2,6,23,0.6);backdrop-filter: blur(6px);
+    }
+    .small{font-size:13px;color:#c7d2fe}
+    .form-row{margin-top:12px}
+    label{display:block;font-size:13px;margin-bottom:8px;color:#dbeafe}
+    input[type="email"],input[type="password"]{
+      width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;outline:none;font-size:15px;
+      transition:box-shadow .18s,border-color .18s;
+    }
+    input:focus{box-shadow:0 6px 18px rgba(124,58,237,0.12);border-color:rgba(124,58,237,0.6)}
+
+    .row-between{display:flex;justify-content:space-between;align-items:center}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:11px 14px;border-radius:12px;border:0;cursor:pointer;font-weight:600;font-size:15px;
+      background:linear-gradient(90deg,var(--accent),#06b6d4);color:white;box-shadow:0 10px 30px rgba(124,58,237,0.18);
+    }
+    .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#e6eef8}
+
+    .socials{display:flex;gap:8px;margin-top:12px}
+    .socials button{flex:1;padding:10px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+
+    .muted{opacity:0.8;font-size:13px}
+
+    /* small screens */
+    @media (max-width:980px){
+      .container{grid-template-columns:1fr;}
+      .hero{order:2}
+      .card{order:1}
+      body{padding:28px 12px}
+    }
+
+    /* Subtle animated background shapes */
+    .bg-shapes{position:absolute;inset:0;pointer-events:none;mix-blend-mode:screen}
+    .shape{position:absolute;filter:blur(60px);opacity:0.18}
+    .s1{width:420px;height:420px;background:linear-gradient(135deg,#7c3aed,#06b6d4);left:-80px;top:-80px;border-radius:40%;transform:rotate(20deg)}
+    .s2{width:320px;height:320px;background:linear-gradient(135deg,#06b6d4,#3b82f6);right:-100px;bottom:-60px;border-radius:40%;transform:rotate(-12deg)}
+
+    /* tiny helper */
+    .eye{cursor:pointer;background:transparent;border:0;color:#c7d2fe}
+  </style>
+</head>
+<body>
+  <div class="bg-shapes" aria-hidden="true">
+    <div class="shape s1"></div>
+    <div class="shape s2"></div>
+  </div>
+  <main class="container" role="main">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="logo"><div class="mark">LP</div><div>
+        <div style="font-weight:700">BrandName</div>
+        <div class="small" style="margin-top:2px">Secure. Fast. Delightful.</div>
+      </div></div>
+      <h1 id="hero-title">Masuk ke akunmu — cepat & aman</h1>
+      <p class="lead">Desain minimal, performa maksimal. Masuk untuk melanjutkan. Landing page ini cocok untuk produk SaaS, dashboard internal, atau aplikasi seluler.</p>
+
+      <div class="features" role="list">
+        <div class="feature" role="listitem"><div class="dot"></div><div>Two‑factor ready</div></div>
+        <div class="feature" role="listitem"><div class="dot"></div><div>Keamanan enkripsi</div></div>
+        <div class="feature" role="listitem"><div class="dot"></div><div>Integrasi SSO</div></div>
+      </div>
+
+    </section>
+
+    <aside class="card" aria-labelledby="login-title">
+      <h2 id="login-title" style="margin:0 0 6px">Masuk</h2>
+      <div class="small muted">Masukkan email dan kata sandi untuk mengakses akun.</div>
+
+      <form style="margin-top:16px" onsubmit="event.preventDefault(); onSubmit();">
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="nama@contoh.com" required />
+        </div>
+        <div class="form-row">
+          <label for="password">Kata sandi</label>
+          <div style="display:flex;gap:8px;align-items:center">
+            <input id="password" type="password" placeholder="••••••••" required />
+            <button type="button" class="eye" aria-label="Tampilkan kata sandi" onclick="togglePwd()">👁️</button>
+          </div>
+        </div>
+
+        <div class="form-row row-between" style="margin-top:8px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px"><input id="remember" type="checkbox" /> Ingat saya</label>
+          <a href="#" class="small muted">Lupa kata sandi?</a>
+        </div>
+
+        <div class="form-row" style="margin-top:14px">
+          <button class="btn" type="submit">Masuk</button>
+        </div>
+
+        <div style="margin-top:12px;text-align:center" class="small muted">atau masuk dengan</div>
+        <div class="socials" style="margin-top:10px">
+          <button class="ghost" type="button">Google</button>
+          <button class="ghost" type="button">GitHub</button>
+        </div>
+
+        <div style="margin-top:14px;text-align:center" class="muted">Belum ada akun? <a href="#" style="color:inherit;font-weight:700;text-decoration:underline">Daftar</a></div>
+
+      </form>
+
+      <div style="margin-top:18px;font-size:12px;color:#c7d2fe;opacity:0.85">Versi demo • hak cipta &copy; <span id="year"></span></div>
+    </aside>
+
+  </main>
+
+  <script>
+    // small JS interactions
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function togglePwd(){
+      var p = document.getElementById('password');
+      if(p.type === 'password'){ p.type='text'; } else { p.type='password'; }
+    }
+
+    function onSubmit(){
+      var email = document.getElementById('email').value;
+      var remember = document.getElementById('remember').checked;
+      // Simple demo - show a friendly message
+      alert('Mencoba masuk sebagai: ' + email + (remember ? ' (Akan diingat)':'') );
+    }
+  </script>
+</body>
+</html>
